@@ -2,16 +2,12 @@ import React from "react";
 import { useState } from "react";
 import {AddCategory} from './components/AddCategory'
 
-
-
-
-
 export const GifExpertApp = () => {
 
     const [categories, setCategories] = useState([ 'One Punch', 'Dragon Ball' ])
 
-    const onAddCategory = () => {
-        setCategories([...categories,'Valorant'])
+    const onAddCategory = (newCategory) => {
+        setCategories([...categories,newCategory])
     }
 
     return (
@@ -22,17 +18,16 @@ export const GifExpertApp = () => {
 
       {/* Input */}
 
-      <AddCategory></AddCategory>
+      <AddCategory onNewCategory={onAddCategory}></AddCategory>
 
       {/* Listado de Items */}
-      <button onClick={onAddCategory}>Agregar</button>
+
       <ol> 
         {categories.map(category => {
             return <li key={category}>{category}</li>
         })}
       </ol>
-
-
+      
       {/* Gif item */}
     </>
   );
