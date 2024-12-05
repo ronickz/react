@@ -1,6 +1,14 @@
-import { Link, NavLink } from 'react-router'
+import { Link, NavLink, useNavigate } from 'react-router'
 
 export const Navbar = () => {
+  const navigate = useNavigate()
+
+  const logOut = () => {
+    navigate('/login', {
+      replace: true
+    })
+  }
+
   return (
     <nav className='navbar navbar-expand-sm navbar-dark bg-dark p-2'>
       <Link className='navbar-brand' to='/'>
@@ -12,9 +20,11 @@ export const Navbar = () => {
           <NavLink className='nav-item nav-link' to='/marvel'>
             Marvel
           </NavLink>
-
           <NavLink className='nav-item nav-link' to='/dc'>
             DC
+          </NavLink>
+          <NavLink className='nav-item nav-link' to='/search'>
+            Search
           </NavLink>
         </div>
       </div>
@@ -23,7 +33,7 @@ export const Navbar = () => {
         <ul className='navbar-nav ml-auto'>
           <span className='nav-item nav-link text-primary'>Eze</span>
 
-          <button className='nav-item nav-link btn btn-outline-primary'>Salir</button>
+          <button className='nav-item nav-link btn btn-outline-primary' onClick={() => logOut()}>Salir</button>
         </ul>
       </div>
     </nav>
